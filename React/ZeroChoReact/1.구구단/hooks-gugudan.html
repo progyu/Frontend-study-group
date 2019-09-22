@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>Hooks! 구구단</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const GuGuDan = () => {
+      const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9)); // setFirst: setState 역할. 즉, first 전용 setState // useState(): 괄호 안에는 초기값 설정
+      const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+      const [value, setValue] = React.useState('');
+      const [result, setResult] = React.useState('');
+      const inputRef = React.useRef(null);
+
+
+      const onChangeInput = (e) => {
+        setValue(e.target.value);
+      }
+
+      const onSubmitForm = (e) => {
+        e.preventDefault();
+        if(first * second === parseInt(value)) {
+          setFirst(Math.ceil(Math.random() * 9));
+          setSecond(Math.ceil(Math.random() * 9));
+          setResult('정답' + value);
+          setValue('');
+          inputRef.current.focus();
+        }
+        else {
+          setResult('땡');
+          setValue('');
+          inputRef.current.focus();
+        }
+      }
+
+      return (
+        <React.Fragment>
+          <div>{first}곱하기{second}는?</div>
+          <form onSubmit={onSubmitForm}>
+            <input type="number" ref={inputRef} value={value} onChange={onChangeInput} />
+            <button>입력!!</button>
+          </form>
+          <div>{result}</div>
+        </React.Fragment>
+        );
+    }        
+  </script>
+  <script type="text/babel">
+    ReactDOM.render(<GuGuDan />, document.querySelector('#root'));  // 실제로 버튼 태그를 만든다.
+  </script>
+</body>
+</html>

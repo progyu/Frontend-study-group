@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>첫 리액트 컴포넌트</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // html 태그를 만드는 코드
+    // const e = React.createElement;
+
+    // component를 만드는 코드
+    class LikeButton extends React.Component {
+        // component가 처음에 실행될 때 가장 먼저 실행되는 부분
+        // 객체지향에서는 중요하나 React에서는 기본적으로 쓰는 것이라고 생각하면 편함.
+        constructor(props) {
+            super(props);
+            // 상태
+            this.state = {
+              liked: false,
+            }
+        }
+        // 어떻게 화면에 표시할 것인지를 결정해주는 메서드
+        render() {
+            // html 태그 형식으로 작성 가능 => React.createElement를 사용하지 않아도 된다.
+            // JSX(JS + XML) : XML, 태그를 꼭 닫아줘야 한다. 문법이 엄격하다.
+            return <button type="submit" onClick={() => { this.setState({ liked: true })}}>
+              { this.state.liked === true ? 'Liked' : 'Like'}
+            </button>;
+
+            // React.createElement를 이용한 옛날 코드
+            // return e(
+            //   'button',
+            //   { onClick: () => { this.setState({ liked: true}) }, type: 'submit' }, 
+            //   this.state.liked === true ? 'Liked' : 'Like'
+            // );
+         
+            // return e('button', null, 'Like');  null 위치 : HTML 속성을 넣는 자리(객체 형식으로 표현)
+            // <button>Like</button> -> 버튼 태그를 만들겠다
+      }
+    }
+  </script>
+  <script type="text/babel">
+    // 웹에다가 실제로 렌더링 해주는 것. ReactDOM
+    // 컴포넌트화하여 재사용이 쉽다.
+    ReactDOM.render(<div><LikeButton /><LikeButton /><LikeButton /></div>, document.querySelector('#root'));  // 실제로 버튼 태그를 만든다.
+  </script>
+</body>
+</html>
