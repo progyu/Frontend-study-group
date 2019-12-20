@@ -4,6 +4,7 @@
 // 일요일에서 월요일로 넘어가는 밤을 제외하고 매일 운행을 하고 있습니다.
 // 날짜와 시간을 입력 받으면 운행을 하는지 확인하는 함수가 필요합니다.
 
+// boolean isServiceTime(int day, int hourOfDay)
 // int day = 0,1,2,3,4,5,6 / 0: 월요일, 6: 일요일
 // int hourOfDay = 0 ~ 23
 

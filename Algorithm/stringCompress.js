@@ -2,12 +2,14 @@
 
 // 문자열을 아래와 같은 방식으로 압축하는 함수를 작성해주세요.
 // (ZZZAAAABBCCQ => 3Z4A2B2C1Q)
+// String compress(String any)
 
 // 압축된 문자열을 아래와 같은 방식으로 해제하는 함수를 작성해주세요.
 // (3Z4A2B2C1Q => ZZZAAAABBCCQ)
+// String decompress(String compressed)
 
 // 문자열을 압축하는 함수
-const stringCompress = s => {
+const compress = s => {
   let compressedStr = "";
   let count = 1;
   let char = s[0];
@@ -26,23 +28,23 @@ const stringCompress = s => {
 };
 
 // 문자열을 해제하는 함수
-const stringDecompress = s => {
-  let deCompressedStr = "";
+const decompress = s => {
+  let decompressedStr = "";
 
   for (let i = 0; i < s.length; i += 1) {
     let toNumberType = +s[i];
 
     if (toNumberType) {
       // 숫자이면 true, 숫자가 아닌 문자는 NaN으로 평가되어  false
-      deCompressedStr += s[i + 1].repeat(toNumberType);
+      decompressedStr += s[i + 1].repeat(toNumberType);
     }
   }
-  return deCompressedStr;
+  return decompressedStr;
 };
 
 // const string = "ABCDEFG";
 const string = "ZZZAAAABBCCQ";
-const Compressedstring = stringCompress(string);
+const compressed = compress(string);
 
-console.log(stringCompress(string));
-console.log(stringDecompress(Compressedstring));
+console.log(compress(string));
+console.log(decompress(compressed));

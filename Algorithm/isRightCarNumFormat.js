@@ -3,6 +3,8 @@
 // 차량번호 형식이 올바른지 확인하는 함수를 만들어주세요.
 // 차량번호 형식: 문자 2개 + 숫자 2개 + 문자 1개 + 숫자 4개
 
+// boolean isRightCarNumFormat(String carNum)
+
 const isRightCarNumFormat = carNum => {
   if (carNum.length !== 9) return false;
 
