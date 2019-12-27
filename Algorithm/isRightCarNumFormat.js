@@ -20,7 +20,7 @@ const isRightCarNumFormat = carNum => {
 
     for (let j = 0; j < sliceCarNum.length; j += 1) {
       // 문자일 경우 true
-      if (isNaN(+sliceCarNum[j])) {
+      if (isNaN(Number(sliceCarNum[j]))) {
         numberOfChar += 1;
       }
     }
@@ -37,6 +37,6 @@ const isRightCarNumFormat = carNum => {
   return true;
 };
 
-// const carNum = '서127가8421';
-const carNum = "서울27가8420";
+const carNum = '서127가8421';
+// const carNum = "서울27가8420";
 console.log(isRightCarNumFormat(carNum));

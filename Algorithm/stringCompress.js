@@ -32,7 +32,7 @@ const decompress = s => {
   let decompressedStr = "";
 
   for (let i = 0; i < s.length; i += 1) {
-    let toNumberType = +s[i];
+    let toNumberType = Number(s[i]);
 
     if (toNumberType) {
       // 숫자이면 true, 숫자가 아닌 문자는 NaN으로 평가되어  false
